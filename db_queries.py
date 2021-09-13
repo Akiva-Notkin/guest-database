@@ -61,6 +61,28 @@ def insert_guest_to_stay_into_db(guest_id, date_of_stay, notes, conn=None):
     cur.execute(insert_string)
     conn.commit()
 
+def get_guest_by_local_id(local_id, conn=None):
+    if conn is None:
+        conn = create_connection(database)
+
+    cur = conn.cursor()
+    select_string = f"SELECT * FROM guests WHERE local_id='{local_id}'"
+    cur.execute(select_string)
+
+    guest = cur.fetchone()
+    return guest
+
+
+def get_stays_by_guest_id(guest_id, conn=None):
+    if conn is None:
+        conn = create_connection(database)
+
+    cur = conn.cursor()
+    select_string = f"SELECT * FROM stays WHERE guest_id_stays={guest_id}"
+    cur.execute(select_string)
+
+    rows = cur.fetchall()
+    return rows
 
 def get_all_guests(conn=None):
     if conn is None:
