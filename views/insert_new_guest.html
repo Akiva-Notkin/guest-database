@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Insert new guest
+    </title>
+</head>
+<body>
+<h3>
+    Insert new guest
+</h3>
+    <p>
+        <form action="/insert_new_guest" method="post">
+            First Name: <input type="text" name="first_name">  <br />
+            Last Name: <input type="text" name="last_name" /> <br />
+            Also known as: <input type="text" name="also_known_as" /> <br />
+            Gender: <select id="gender" name="gender">
+                      <option value="she/her">She/her</option>
+                      <option value="he/him">He/him</option>
+                      <option value="other">Other</option>
+                    </select><br/>
+            Date of Birth: <input type="date" name="date_of_birth" value="2000-01-01"> <br />
+            <input type="submit" name= "form" value="Submit" />
+        </form>
+    </p>
+</body>
+</html>

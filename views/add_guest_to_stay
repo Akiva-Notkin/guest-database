@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Add guest to stay
+    </title>
+</head>
+<body>
+<h3>
+    Add guest to stay
+</h3>
+    <p>
+        <form action="/add_guest_to_stay" method="post">
+            Guest:
+            <select id="guest_id" name="guest_id">
+            % for (guest_name, guest_id) in guests:
+                <option value="{{guest_id}}">{{guest_name}}</option>
+            % end
+            </select><br/>
+            Date of Stay: <input type="date" name="date_of_stay"> <br />
+            Note: <input type="text" name="notes"> <br/>
+            <input type="submit" name= "form" value="Submit" />
+        </form>
+    </p>
+</body>
+</html>
