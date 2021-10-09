@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>
-        Insert new guest
-    </title>
-</head>
-<body>
+% include('header.html', title=title)
 <h3>
-    Insert new guest
+    {{ title }}
 </h3>
     <p>
         <form action="/insert_new_guest" method="post">
@@ -23,5 +16,4 @@
             <input type="submit" name= "form" value="Submit" />
         </form>
     </p>
-</body>
-</html>
+% include('footer.html')

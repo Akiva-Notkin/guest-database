@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>
-        Add guest to stay
-    </title>
-</head>
-<body>
+% include('header.html', title=title)
 <h3>
-    Add guest to stay
+    {{ title }}
 </h3>
     <p>
         <form action="/add_guest_to_stay" method="post">
@@ -22,5 +15,4 @@
             <input type="submit" name= "form" value="Submit" />
         </form>
     </p>
-</body>
-</html>
+% include('footer.html')

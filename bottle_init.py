@@ -1,13 +1,15 @@
-from bottle import route, run, template, post, request, static_file
+from bottle import route, run, template, post, request
 from db_queries import insert_new_guest_into_db, insert_guest_to_stay_into_db, get_all_guests, get_guest_by_local_id, get_stays_by_guest_id
+
 
 @route('/hello')
 def hello():
     return "Hello World!"
 
+
 @route('/insert_new_guest')
 def insert_new_guest_form():
-    return static_file('insert_new_guest.html', root="./views")
+    return template('insert_new_guest.html', root="./views", title="Insert New Guest")
 
 
 @post('/insert_new_guest')
@@ -27,7 +29,8 @@ def insert_new_guest():
 def add_guest_to_stay_form():
     guests = get_all_guests()
     guests = [(f"{guest[2]} {guest[3]}", guest[0]) for guest in guests]
-    return template('add_guest_to_stay', guests=guests)
+    return template('add_guest_to_stay.html', guests=guests, title="Add guest to stay")
+
 
 @post('/add_guest_to_stay')
 def add_guest_to_stay():
@@ -35,6 +38,7 @@ def add_guest_to_stay():
     date_of_stay = request.forms.get('date_of_stay')
     notes = request.forms.get('notes')
     insert_guest_to_stay_into_db(guest_id=guest_id, date_of_stay=date_of_stay, notes=notes)
+
 
 @route('/guest/<local_id>')
 def get_guest_info(local_id):
